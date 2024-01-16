@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrl: './search-item.component.css'
 })
 export class SearchItemComponent {
-
+  search: string = '';
 }

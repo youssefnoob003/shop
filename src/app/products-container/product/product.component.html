@@ -1,0 +1,23 @@
+<div class="product">
+    <div class="product-image">
+        <img [src]="product.image" alt="product.name">
+        <div *ngIf="product.discount" class="product-discount">
+            {{product.discount * 100 + '% OFF'}}
+        </div>
+    </div>
+    <div class="description">
+        <div class="product-name">
+            {{product.name}}
+        </div>
+        <div class="product-price">
+            <div *ngIf="!product.discount" class="product-price">{{product.price + '$'}}</div>
+            <div *ngIf="product.discount" class="product-price">
+                <span class="original-price">{{product.price + '$'}}</span><span class="discount">{{ (product.price * (1 - product.discount)).toFixed(2) + '$'}}</span>
+            </div>
+        </div>
+        <div class="product-button">
+            <button [disabled]="!product.instock" [ngClass]="{'disabled': !product.instock}">
+                {{ product.instock ? 'Add to cart' : 'Not available' }}
+            </button>
+        </div>
+    </div>
