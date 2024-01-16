@@ -11,6 +11,7 @@ import { NavMenuComponent } from './header/nav-menu/nav-menu.component';
 import { FormsModule } from '@angular/forms';
 import { ProductsContainerComponent } from './products-container/products-container.component';
 import { SearchItemComponent } from './products-container/search-item/search-item.component';
+import { ProductComponent } from './products-container/product/product.component';
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import { SearchItemComponent } from './products-container/search-item/search-ite
     SearchBarComponent,
     NavMenuComponent,
     ProductsContainerComponent,
-    SearchItemComponent
+    SearchItemComponent,
+    ProductComponent
   ],
   imports: [
     BrowserModule,
