@@ -1,0 +1,25 @@
+.DeCart-top-header {
+    background-color: #2980b9;
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+    font-size: 1.3em; /* Increased font size */
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+}
+
+.DeCart-top-header p {
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.DeCart-top-header i {
+    margin-left: 5px;
+    font-size: 1.3em; /* Increased font size */
+}

@@ -1,0 +1,24 @@
+nav {
+    background-color: #2980b9; /* Slightly darker blue for navigation */
+    text-align: center;
+    padding: 7px; /* Increased padding */
+    flex-grow: 0.5; /* Take up less available space */
+    border-radius: 10px;
+    min-width: 750px;
+}
+
+nav a {
+    font-family: 'roboto', sans-serif;
+    color: #fff;
+    text-decoration: none;
+    padding: 10px; /* Increased padding */
+    margin: 0 20px;
+    display: inline-block;
+    font-size: 1.17em; /* Increased font size */
+    transition: 0.5s;
+    border-radius: 10px;
+}
+
+nav a:hover {
+    background-color: #1f679b; /* Darker blue on hover */
+}
