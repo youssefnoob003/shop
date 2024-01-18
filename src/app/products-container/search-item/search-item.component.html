@@ -1,6 +1,11 @@
 <div class="search-bar">
-    <input type="text" placeholder="Search for products" [(ngModel)]="search">
-    <button type="submit" [ngClass]="{'empty': !search}">
+    <input type="text" 
+        placeholder="Search for products" 
+        [(ngModel)]="search"
+        (input)="reset()"
+        (keydown)="onKeyDown($event)"
+        #searchInput>
+    <button type="submit" [ngClass]="{'empty': !search}" [disabled]="!search" (click)="searchChange()">
         <i class="fa fa-search"></i>
     </button>
 </div>

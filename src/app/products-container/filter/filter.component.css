@@ -1,0 +1,26 @@
+.filter-container {
+    display: flex;
+    align-items: center;
+    margin: 50px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: large;
+    margin-bottom: 20px;
+}
+
+.filter-label {
+    margin-right: 10px;
+    font-size: larger;
+}
+
+label {
+    cursor: pointer;
+    margin-right: 15px;
+}
+
+input[type="radio"] {
+    cursor: pointer;
+    accent-color: rgb(255, 77, 0);
+    width: 1.2em; /* Adjust the size as needed */
+    height: 1.2em; /* Adjust the size as needed */
+    margin: 10px;
+}

@@ -6,5 +6,8 @@ import { Component } from '@angular/core';
   styleUrl: './products-container.component.css'
 })
 export class ProductsContainerComponent {
-
+  searchValue: string;
+  searchChanged(search: string) {
+    this.searchValue = search;
+  }
 }

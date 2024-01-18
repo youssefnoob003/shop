@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'product-list',
@@ -100,4 +100,32 @@ export class ProductListComponent {
       "instock": false
     }
   ]
+
+  @Input()
+  searchValue: string;
+
+  all: number = this.products.length;
+  inStock: number = this.products.filter(product => product.instock).length;
+  outOfStock: number = this.products.filter(product => !product.instock).length;
+
+  filter: string = 'all';
+
+  filterCondition(product: any) {
+   if (this.filter === 'inStock') {
+      return product.instock;
+    } else if (this.filter === 'outOfStock') {
+      return !product.instock;
+    }
+
+    return true;
+  }
+
+  onFilterChange(value: string) {
+    this.filter = value;
+  }
+
+  searchCondition(product: any) {
+    if (!this.searchValue) return true;
+    return product.name.toLowerCase().indexOf(this.searchValue.toLowerCase()) >= 0;
+  }
 }
