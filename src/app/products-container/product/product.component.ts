@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { Product } from '../../Models/Product';
 
 @Component({
   selector: 'product',
@@ -6,14 +7,23 @@ import { Component, Input } from '@angular/core';
   styleUrl: './product.component.css'
 })
 export class ProductComponent {
+
+addToCart(prod: Product) {
+  console.log("cart");
+}
+
+prodDetails(prod: Product) {
+  console.log("details");
+}
+
+getImageUrl(prod: Product): string {
+  return `../../assets/products/${prod.name.replace(' ', '')}/${prod.displayColor}.png`;
+}
+
+IsInStock(prod: Product): boolean {
+  return prod.quantity > 0;
+}
+
   @Input()
-  product: {
-    "id": number;
-    "name": string;
-    "price": number;
-    "category": string;
-    "image": string;
-    "discount": number;
-    "instock": boolean;
-  };
+  product: Product;
 }

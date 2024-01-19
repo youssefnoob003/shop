@@ -22,6 +22,8 @@
     height: 200px;
     border-radius: 5px;
     object-fit: cover;
+    cursor: pointer;
+    width: 100%;
 }
 
 .description {
@@ -35,12 +37,18 @@
     font-size: 1.2em;
     font-weight: bold;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    cursor: pointer;
+}
+
+.product-name:hover {
+    text-decoration: underline;
 }
 
 .product-price {
     margin: 10px 5px;
     font-size: 1.1em;
     color: #3498db;
+    cursor: default;
 }
 
 .product-button button {

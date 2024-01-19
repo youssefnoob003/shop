@@ -13,6 +13,7 @@ import { ProductsContainerComponent } from './products-container/products-contai
 import { SearchItemComponent } from './products-container/search-item/search-item.component';
 import { ProductComponent } from './products-container/product/product.component';
 import { FilterComponent } from './products-container/filter/filter.component';
+import { ProductDetailsComponent } from './products-container/product-details/product-details.component';
 
 
 @NgModule({
@@ -27,7 +28,8 @@ import { FilterComponent } from './products-container/filter/filter.component';
     ProductsContainerComponent,
     SearchItemComponent,
     ProductComponent,
-    FilterComponent
+    FilterComponent,
+    ProductDetailsComponent
   ],
   imports: [
     BrowserModule,

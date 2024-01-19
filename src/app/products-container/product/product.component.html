@@ -1,6 +1,6 @@
 <div class="product">
     <div class="product-image">
-        <img [src]="product.image" alt="product.name">
+        <img [src]="getImageUrl(product)" alt="product.name">
         <div *ngIf="product.discount" class="product-discount">
             {{product.discount * 100 + '% OFF'}}
         </div>
@@ -16,8 +16,8 @@
             </div>
         </div>
         <div class="product-button">
-            <button [disabled]="!product.instock" [ngClass]="{'disabled': !product.instock}">
-                {{ product.instock ? 'Add to cart' : 'Not available' }}
+            <button [disabled]="!IsInStock(product)" [ngClass]="{'disabled': !IsInStock(product)}" (click)="addToCart(product)">
+                {{ IsInStock(product) ? 'Add to cart' : 'Not available' }}
             </button>
         </div>
     </div>
