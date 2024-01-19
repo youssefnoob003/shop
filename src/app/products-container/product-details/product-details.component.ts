@@ -1,10 +1,27 @@
-import { Component } from '@angular/core';
+// product-details.component.ts
+import { Component, Input, OnInit } from '@angular/core';
+import { Product } from '../../Models/Product';
 
 @Component({
-  selector: 'app-product-details',
+  selector: 'product-details',
   templateUrl: './product-details.component.html',
-  styleUrl: './product-details.component.css'
+  styleUrls: ['./product-details.component.css']
 })
-export class ProductDetailsComponent {
+export class ProductDetailsComponent implements OnInit {
+  @Input()
+  product: Product;
 
+  selectedColor: string;
+
+  changeColor(color: string) {
+    this.selectedColor = color;
+  }
+
+  ngOnInit() {
+    this.selectedColor = this.product ? this.product.displayColor : '';
+  }
+
+  addToCart(product: Product) {
+    console.log('Adding to cart:', product);
+  }
 }

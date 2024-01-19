@@ -5,8 +5,13 @@
         (filterChanged)="onFilterChange($event)">
     </filter>
     <div class="container">
-        <div *ngFor="let product of products" (click)="selected($event, product)">
+        <div *ngFor="let product of productObjects" (click)="selected($event, product)">
             <product  [product]="product" *ngIf="filterCondition(product) && searchCondition(product)"></product>
         </div>
+    </div>
+</div>
+<div class="selected-container" (click)="close($event)" [ngStyle]="{'right': selectedProduct ? '0' : 'auto'}">
+    <div class="product-container" *ngIf="selectedProduct" >
+        <product-details [product]="selectedProduct"></product-details>
     </div>
 </div>

@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Product } from '../../Models/Product';
 
 @Component({
@@ -8,13 +8,21 @@ import { Product } from '../../Models/Product';
 })
 
 export class ProductListComponent {
+
   selectedProduct: Product;
 
   selected(event: Event, product: Product) {
-    // if the click is not on the (add to cart) button
     if (!(event.target as HTMLElement).closest('button')) { 
       this.selectedProduct = product; 
-      console.log('selected');
+    }
+  }
+
+  close(event: Event) {
+    if (!((event.target as HTMLElement).closest('.product-button') ||
+         (event.target as HTMLElement).closest('.product-description') ||
+         (event.target as HTMLElement).closest('img')) ||
+         (event.target as HTMLElement).closest('.close-button')) { 
+      this.selectedProduct = null; 
     }
   }
 
@@ -26,7 +34,7 @@ export class ProductListComponent {
         "category": "Electronics",
         "description": "Stay connected with the latest technology. Our smartphone features advanced capabilities and a sleek design.",
         "quantity": 1,
-        "colors": ["Lavender", "Cream", "Botanic", "Black"],
+        "colors": ["Lavender", "Cream", "Green", "Black"],
         "displayColor": "Lavender",
         "brand": "Samsung",
         "tags": ["smartphone", "electronics", "Samsung"]
@@ -179,7 +187,7 @@ export class ProductListComponent {
         "name": "Running Jacket",
         "price": 59.99,
         "category": "Sportswear",
-        "description": "Stay committed to your fitness goals with adidas running jackets that keep you covered and comfortable, no matter the conditions. Lightweight and packable, these jackets make the ultimate layer for cool mornings, rainy evenings and everything in between. WIND.RDY styles block out chilly gusts, and thought-through touches like reflective details and zip pockets for storage make these running coats and jackets an indispensable part of your running wardrobe — whether you're out for a quick jog around the neighborhood or gearing up for a marathon.",
+        "description": "Stay committed to your fitness goals with adidas running jackets that keep you covered and comfortable, no matter the conditions.",
         "quantity": 0,
         "colors": ["White", "Blue"],
         "displayColor": "White",
@@ -202,20 +210,38 @@ export class ProductListComponent {
     }
 ]
 
+    productObjects: Product[] = this.products.map(product => {
+    return new Product(
+      product.id,
+      product.name,
+      product.price,
+      product.category,
+      product.colors,
+      product.displayColor,
+      product.description,
+      product.brand,
+      product.quantity,
+      product.tags,
+      product.discount,
+      product.gender
+    );
+  });
+
+
   @Input()
   searchValue: string;
 
   all: number = this.products.length;
-  inStock: number = this.products.filter(product => this.IsInStock(product)).length;
-  outOfStock: number = this.products.filter(product => !this.IsInStock(product)).length;
+  inStock: number = this.productObjects.filter(product => product.IsInStock()).length;
+  outOfStock: number = this.productObjects.filter(product => !product.IsInStock()).length;
 
   filter: string = 'all';
 
   filterCondition(product: Product): boolean {
    if (this.filter === 'inStock') {
-      return this.IsInStock(product);
+      return product.IsInStock();
     } else if (this.filter === 'outOfStock') {
-      return !this.IsInStock(product);
+      return !product.IsInStock();
     }
 
     return true;
@@ -228,13 +254,5 @@ export class ProductListComponent {
   searchCondition(product: Product): boolean {
     if (!this.searchValue) return true;
     return product.name.toLowerCase().indexOf(this.searchValue.toLowerCase()) >= 0;
-  }
-
-  getImageUrl(prod: Product): string {
-    return `../../assets/products/${prod.name.toLowerCase().replace(' ', '')}/${prod.displayColor}.png`;
-  }
-
-  IsInStock(prod: Product): boolean {
-    return prod.quantity > 0;
   }
 }

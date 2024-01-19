@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Product } from '../Models/Product';
 
 @Component({
   selector: 'app-products-container',

@@ -36,7 +36,7 @@
     margin-top: 10px;
     font-size: 1.2em;
     font-weight: bold;
-    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-family: 'roboto', sans-serif;
     cursor: pointer;
 }
 
@@ -83,6 +83,7 @@
 
 .product-image {
     position: relative;
+    background-color: #fff;
 }
 
 .original-price {
@@ -104,4 +105,27 @@
 .product-button button.disabled:hover {
     background-color: #ccc; /* Use the same color as disabled state for hover effect */
     width: 130px;
+}
+
+.colorsSpan {
+    font-size: small;
+    font-family: 'roboto', sans-serif;
+    font-weight: bold;
+}
+
+.availableColors {
+    display: flex;
+    flex-direction: row;
+    margin-left: 10px;
+    margin-top: 20px;
+    justify-self: space-between;
+}
+
+.color {
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    cursor: pointer;
+    border: solid 0.5px black;
+    margin-left: 10px;
 }

@@ -1,13 +1,17 @@
 <div class="product">
     <div class="product-image">
-        <img [src]="getImageUrl(product)" alt="product.name">
+        <img [src]="product.getImageUrl()" alt="product.name">
         <div *ngIf="product.discount" class="product-discount">
             {{product.discount * 100 + '% OFF'}}
         </div>
     </div>
     <div class="description">
         <div class="product-name">
-            {{product.name}}
+            {{ product.brand }}: {{product.name}}
+        </div>
+        <div class="availableColors">
+            <span class="colorsSpan">Available colors </span>
+            <div class="color" *ngFor="let color of product.colors" [ngStyle]="{'background-color': color.toLocaleLowerCase()}"></div>
         </div>
         <div class="product-price">
             <div *ngIf="!product.discount" class="product-price">{{product.price + '$'}}</div>
@@ -16,8 +20,8 @@
             </div>
         </div>
         <div class="product-button">
-            <button [disabled]="!IsInStock(product)" [ngClass]="{'disabled': !IsInStock(product)}" (click)="addToCart(product)">
-                {{ IsInStock(product) ? 'Add to cart' : 'Not available' }}
+            <button [disabled]="!product.IsInStock()" [ngClass]="{'disabled': !product.IsInStock()}" (click)="addToCart(product)">
+                {{ product.IsInStock() ? 'Add to cart' : 'Not available' }}
             </button>
         </div>
     </div>

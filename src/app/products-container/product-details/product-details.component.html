@@ -1,1 +1,36 @@
-<p>product-details works!</p>
+<div class="product-container">
+    <div class="product-image">
+        <img [src]="product.getImageUrl(selectedColor)">
+        <div *ngIf="product.discount" class="product-discount">
+            {{product.discount * 100 + '% OFF'}}
+        </div>
+    </div>
+    <div class="product-description">
+        <div class="close-button">X</div>
+        <h1>{{ product.brand }} {{product.name}}</h1>
+        <div class="tags">
+            <div class="tag" *ngFor="let tag of product.tags">{{tag}}</div>
+        </div>
+        <p>{{ product.description }}</p>
+        <div class="product-price">
+            <div *ngIf="!product.discount" class="product-price">{{product.price + '$'}}</div>
+            <div *ngIf="product.discount" class="product-price">
+                <span class="original-price">{{product.price + '$'}}</span><span class="discount">{{ (product.price * (1 - product.discount)).toFixed(2) + '$'}}</span>
+            </div>
+        </div> 
+        <div class="availableColors">
+            <span class="colorsSpan">Available colors </span>
+            <div class="color" 
+            *ngFor="let color of product.colors" 
+            [ngStyle]="{'background-color': color.toLocaleLowerCase(),
+                        'border': color === selectedColor ? '2px solid black' : '1px solid black'}"
+            (click)="changeColor(color)"></div>
+        </div>       
+        <div class="product-button">
+            <button [disabled]="!product.IsInStock()" [ngClass]="{'disabled': !product.IsInStock()}" (click)="addToCart(product)">
+                {{ product.IsInStock() ? 'Add to cart' : 'Not available' }}
+            </button>
+        </div>
+    </div>
+</div>
+

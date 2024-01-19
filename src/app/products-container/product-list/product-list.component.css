@@ -11,3 +11,13 @@
     flex-direction: column;
     align-items: center;
 }
+
+.selected-container {
+    position: fixed;
+    left: 100px;
+    top: 100px;
+    bottom: 0;
+    height: 1fr;
+    background-color: white;
+    opacity: 0.95;
+}
